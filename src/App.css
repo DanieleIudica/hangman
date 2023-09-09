@@ -1,0 +1,113 @@
+/* main */
+.container {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.title {
+  font-size: 2rem;
+  text-align: center;
+}
+
+/* drawing */
+.drawing-container {
+  position: relative;
+  padding-right: 50px;
+}
+
+.bottom-bar {
+  height: 10px;
+  width: 180px;
+  background-color: rgb(14, 14, 14);
+}
+
+.vert-bar {
+  height: 400px;
+  width: 10px;
+  margin-left: 85px;
+  background-color: rgb(14, 14, 14);
+}
+
+.top-bar {
+  height: 10px;
+  width: 180px;
+  margin-left: 85px;
+  background-color: rgb(14, 14, 14);
+}
+
+.rope-bar {
+  width: 10px;
+  height: 50px;
+  position: absolute;
+  top: 0;
+  right: 50px;
+  background-color: rgb(14, 14, 14);
+}
+
+.head {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  border: 10px solid black;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: transparent;
+}
+
+.body {
+  width: 10px;
+  height: 100px;
+  background-color: rgb(14, 14, 14);
+  position: absolute;
+  top: 120px;
+  right: 50px;
+}
+
+.right-arm {
+  height: 10px;
+  width: 80px;
+  background-color: rgb(14, 14, 14);
+  position: absolute;
+  top: 150px;
+  right: -30px;
+  rotate: -30deg;
+  transform-origin: left bottom;
+}
+
+.left-arm {
+  height: 10px;
+  width: 80px;
+  background-color: rgb(14, 14, 14);
+  position: absolute;
+  top: 150px;
+  right: 60px;
+  rotate: 30deg;
+  transform-origin: right bottom;
+}
+
+.right-leg {
+  height: 10px;
+  width: 80px;
+  background-color: rgb(14, 14, 14);
+  position: absolute;
+  top: 210px;
+  right: -20px;
+  rotate: 60deg;
+  transform-origin: left bottom;
+}
+
+.left-leg {
+  height: 10px;
+  width: 80px;
+  background-color: rgb(14, 14, 14);
+  position: absolute;
+  top: 210px;
+  right: 50px;
+  rotate: -60deg;
+  transform-origin: right bottom;
+}
