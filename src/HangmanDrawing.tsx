@@ -5,15 +5,15 @@ const LEFT_ARM = <div className="left-arm"></div>;
 const RIGHT_LEG = <div className="right-leg"></div>;
 const LEFT_LEG = <div className="left-leg"></div>;
 
-const HangmanDrawing = () => {
+const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
+type HangmanDrawingProps = {
+  numberOfGuesses: number;
+};
+
+const HangmanDrawing = ({ numberOfGuesses }: HangmanDrawingProps) => {
   return (
     <div className="drawing-container">
-      {HEAD}
-      {BODY}
-      {RIGHT_ARM}
-      {LEFT_ARM}
-      {RIGHT_LEG}
-      {LEFT_LEG}
+      {BODY_PARTS.slice(0, numberOfGuesses)}
       <div className="rope-bar"></div>
       <div className="top-bar"></div>
       <div className="vert-bar"></div>
