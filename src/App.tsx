@@ -26,7 +26,7 @@ function App() {
 
   const isLoser = incorrectLetters.length >= 6;
   const isWinner =
-    wordToGuess &&
+    wordToGuess !== "" &&
     wordToGuess.split("").every((letter) => guessedLetters.includes(letter));
 
   const addGuessedLetter = useCallback(
@@ -72,15 +72,16 @@ function App() {
   console.log(wordToGuess);
   return (
     <div className="container">
+      <HangmanDrawing numberOfWrongGuesses={incorrectLetters.length} />
       <div className="title">
         {isWinner && "YOU WON!"}
         {isLoser && "NICE TRY.."}
       </div>
-      <HangmanDrawing numberOfWrongGuesses={incorrectLetters.length} />
       <HangmanWord
         guessedLetters={guessedLetters}
         wordToGuess={wordToGuess}
         revealWord={isLoser}
+        isWinner={isWinner}
       />
       <div className="keyboard-wrapper">
         <Keyboard
