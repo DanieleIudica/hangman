@@ -1,15 +1,22 @@
 import { useCallback, useEffect, useState } from "react";
-import words from "./wordList.json";
+import engWords from "./engWordList.json";
+import itaWords from "./itaWordList.json";
 
 import "./App.css";
 import HangmanDrawing from "./HangmanDrawing";
 import HangmanWord from "./HangmanWord";
 import Keyboard from "./Keyboard";
 
+function getNewEnglishWord() {
+  return engWords[Math.floor(Math.random() * engWords.length)];
+}
+
+function getNewItalianWord() {
+  return itaWords[Math.floor(Math.random() * itaWords.length)];
+}
+
 function App() {
-  const [wordToGuess, setWordToGuess] = useState(() => {
-    return words[Math.floor(Math.random() * words.length)];
-  });
+  const [wordToGuess, setWordToGuess] = useState("");
 
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
@@ -17,13 +24,33 @@ function App() {
     (letter) => !wordToGuess.includes(letter)
   );
 
+  const isLoser = incorrectLetters.length >= 6;
+  const isWinner =
+    wordToGuess &&
+    wordToGuess.split("").every((letter) => guessedLetters.includes(letter));
+
   const addGuessedLetter = useCallback(
     (letter: string) => {
-      if (guessedLetters.includes(letter)) return;
+      if (
+        guessedLetters.includes(letter) ||
+        isLoser ||
+        isWinner ||
+        !wordToGuess
+      )
+        return;
+
       setGuessedLetters((currentLetters) => [...currentLetters, letter]);
     },
-    [guessedLetters]
+    [guessedLetters, isLoser, isWinner, wordToGuess]
   );
+
+  function restartEng() {
+    setWordToGuess(getNewEnglishWord()), setGuessedLetters([]);
+  }
+
+  function restartIta() {
+    setWordToGuess(getNewItalianWord()), setGuessedLetters([]);
+  }
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -40,17 +67,34 @@ function App() {
     return () => {
       document.removeEventListener("keypress", handler);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [guessedLetters]);
+  }, [addGuessedLetter, guessedLetters]);
 
   console.log(wordToGuess);
   return (
     <div className="container">
-      <div className="title">Lose Win</div>
-      <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
-      <HangmanWord guessedLetters={guessedLetters} wordToGuess={wordToGuess} />
+      <div className="title">
+        {isWinner && "YOU WON!"}
+        {isLoser && "NICE TRY.."}
+      </div>
+      <HangmanDrawing numberOfWrongGuesses={incorrectLetters.length} />
+      <HangmanWord
+        guessedLetters={guessedLetters}
+        wordToGuess={wordToGuess}
+        revealWord={isLoser}
+      />
       <div className="keyboard-wrapper">
-        <Keyboard />
+        <Keyboard
+          disabled={isWinner || isLoser || !wordToGuess}
+          activeLetters={guessedLetters.filter((letter) =>
+            wordToGuess.includes(letter)
+          )}
+          inactiveLetters={incorrectLetters}
+          addGuessedLetter={addGuessedLetter}
+        />
+      </div>
+      <div className="btns-container">
+        <button onClick={() => restartEng()}>English Word</button>
+        <button onClick={() => restartIta()}>Italian Word</button>
       </div>
     </div>
   );

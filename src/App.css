@@ -1,3 +1,7 @@
+* {
+  font-family: monospace;
+}
+
 /* main */
 .container {
   max-width: 800px;
@@ -9,7 +13,8 @@
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 2.5rem;
+  font-weight: bold;
   text-align: center;
 }
 
@@ -40,11 +45,11 @@
 }
 
 .rope-bar {
-  width: 10px;
+  width: 4px;
   height: 50px;
   position: absolute;
   top: 0;
-  right: 50px;
+  right: 53px;
   background-color: rgb(14, 14, 14);
 }
 
@@ -122,7 +127,6 @@
   font-size: 5rem;
   font-weight: bold;
   text-transform: uppercase;
-  font-family: monospace;
 }
 
 .letter-container {
@@ -148,7 +152,7 @@
   cursor: pointer;
   color: rgb(14, 14, 14);
 }
-/* #5563A9 */
+
 .keyboard-btn:hover:not(:disabled),
 .keyboard-btn:focus:not(:disabled) {
   background-color: #7480bbbd;
@@ -157,10 +161,30 @@
 .keyboard-btn.active {
   color: whitesmoke;
   background-color: #5563a9;
+  cursor: default;
 }
 
 .keyboard-btn.inactive {
   opacity: 0.3;
+  cursor: default;
+}
+
+/* btns-container */
+.btns-container {
+  display: flex;
+}
+
+.btns-container button {
+  padding: 1rem;
+  border-radius: 16px;
+  border: 2px solid rgb(14, 14, 14);
+  margin: 0px 16px;
+  cursor: pointer;
+}
+
+.btns-container button:hover,
+.btns-container button:focus {
+  background-color: #7480bbbd;
 }
 
 /* media */

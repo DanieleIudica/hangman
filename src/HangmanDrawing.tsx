@@ -1,19 +1,20 @@
-const HEAD = <div className="head"></div>;
-const BODY = <div className="body"></div>;
-const RIGHT_ARM = <div className="right-arm"></div>;
-const LEFT_ARM = <div className="left-arm"></div>;
-const RIGHT_LEG = <div className="right-leg"></div>;
-const LEFT_LEG = <div className="left-leg"></div>;
+const HEAD = <div key="head" className="head"></div>;
+const BODY = <div key="body" className="body"></div>;
+const RIGHT_ARM = <div key="right-arm" className="right-arm"></div>;
+const LEFT_ARM = <div key="left-arm" className="left-arm"></div>;
+const RIGHT_LEG = <div key="right-leg" className="right-leg"></div>;
+const LEFT_LEG = <div key="left-leg" className="left-leg"></div>;
 
 const BODY_PARTS = [HEAD, BODY, RIGHT_ARM, LEFT_ARM, RIGHT_LEG, LEFT_LEG];
+
 type HangmanDrawingProps = {
-  numberOfGuesses: number;
+  numberOfWrongGuesses: number;
 };
 
-const HangmanDrawing = ({ numberOfGuesses }: HangmanDrawingProps) => {
+const HangmanDrawing = ({ numberOfWrongGuesses }: HangmanDrawingProps) => {
   return (
     <div className="drawing-container">
-      {BODY_PARTS.slice(0, numberOfGuesses)}
+      {BODY_PARTS.slice(0, numberOfWrongGuesses)}
       <div className="rope-bar"></div>
       <div className="top-bar"></div>
       <div className="vert-bar"></div>
