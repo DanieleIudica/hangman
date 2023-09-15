@@ -188,7 +188,7 @@
 }
 
 /* media */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 480px) {
   .word-container {
     font-size: 2rem;
   }
