@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
-import engWords from "./engWordList.json";
-import itaWords from "./itaWordList.json";
+import engWords from "./data/engWordList.json";
+import itaWords from "./data/itaWordList.json";
 
-import "./App.css";
-import HangmanDrawing from "./HangmanDrawing";
-import HangmanWord from "./HangmanWord";
-import Keyboard from "./Keyboard";
+import "./style/App.css";
+import HangmanDrawing from "./components/HangmanDrawing";
+import HangmanWord from "./components/HangmanWord";
+import Keyboard from "./components/Keyboard";
 
 function getNewEnglishWord() {
   return engWords[Math.floor(Math.random() * engWords.length)];
