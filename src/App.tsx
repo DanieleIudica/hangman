@@ -81,7 +81,7 @@ function App() {
     };
   }, [addGuessedLetter, guessedLetters]);
 
-  console.log(wordToGuess);
+  // console.log(wordToGuess);
   return (
     <div className="container">
       <HangmanDrawing numberOfWrongGuesses={incorrectLetters.length} />
