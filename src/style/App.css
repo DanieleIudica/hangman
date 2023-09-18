@@ -175,19 +175,6 @@
   display: flex;
 }
 
-.btns-container button {
-  padding: 1rem;
-  border-radius: 16px;
-  border: 2px solid rgb(14, 14, 14);
-  margin: 0px 16px;
-  cursor: pointer;
-}
-
-.btns-container button:hover,
-.btns-container button:focus {
-  background-color: #7480bbbd;
-}
-
 /* media */
 @media screen and (max-width: 480px) {
   .word-container {

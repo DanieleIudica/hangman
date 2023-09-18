@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import engWords from "./data/engWordList.json";
 import itaWords from "./data/itaWordList.json";
+import Button from "./components/Button";
 
 import "./style/App.css";
 import HangmanDrawing from "./components/HangmanDrawing";
@@ -100,8 +101,8 @@ function App() {
         />
       </div>
       <div className="btns-container">
-        <button onClick={() => restartEng()}>English Word</button>
-        <button onClick={() => restartIta()}>Italian Word</button>
+        <Button onClick={() => restartEng()}>English Word</Button>
+        <Button onClick={() => restartIta()}>Italian Word</Button>
       </div>
     </div>
   );
