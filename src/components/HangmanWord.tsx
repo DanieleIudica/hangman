@@ -1,15 +1,14 @@
+import { useAtom } from "jotai";
+import { loserAtom, winnerAtom } from "../atom/atom";
+
 type HangmanWordProps = {
   guessedLetters: string[];
   wordToGuess: string;
-  revealWord: boolean;
-  isWinner: boolean;
 };
-const HangmanWord = ({
-  guessedLetters,
-  wordToGuess,
-  revealWord,
-  isWinner,
-}: HangmanWordProps) => {
+const HangmanWord = ({ guessedLetters, wordToGuess }: HangmanWordProps) => {
+  const [loser] = useAtom(loserAtom);
+  const [winner] = useAtom(winnerAtom);
+
   return (
     <div className="word-container">
       {wordToGuess.split("").map((letter, index) => (
@@ -17,13 +16,11 @@ const HangmanWord = ({
           <span
             style={{
               visibility:
-                guessedLetters.includes(letter) || revealWord
-                  ? "visible"
-                  : "hidden",
+                guessedLetters.includes(letter) || loser ? "visible" : "hidden",
               color:
-                !guessedLetters.includes(letter) && revealWord
+                !guessedLetters.includes(letter) && loser
                   ? "red"
-                  : isWinner
+                  : winner
                   ? "lightgreen"
                   : "black",
             }}
